@@ -1,10 +1,10 @@
-# sivasanthosh
+
 <h1 align="center">Hi 👋, I'm SIVA SANTHOSH R</h1>
 <h3 align="center">STUDENT</h3>
 
 <p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=sivasanthosh1815" alt="sivasanthosh1815" /></a> </p>
 
-- 🌱 I’m currently learning **SIGA PTC,CHENNAI-10**
+- 📖✏️ I’m currently studying in  **SIGA Polytechnic college,CHENNAI-10**
 
 - 📫 How to reach me **prosanthosh06@gmail.com**
 
