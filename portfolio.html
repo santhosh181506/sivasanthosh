@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>santhosh</title>
+    <style>
+        body {
+            background-color: #000000;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+        }
+
+        h1, h3, h4 {
+            text-shadow: 0 0 5px #00d8ad, 0 0 10px #12ff2a, 0 0 15px #00ffcc;
+            animation: glow 1.5s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc, 0 0 15px #00ffcc;
+            }
+            to {
+                text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 30px #00ffcc;
+            }
+        }
+
+        p {
+            animation: fadeIn 2s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        a {
+            color: #85ffb8;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #ff877e;
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.7); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes slidePop {
+            0% {
+                transform: scale(0.7) rotate(-10deg);
+                box-shadow: 0 0 40px #00ffcc, 0 0 80px #00ffcc;
+                opacity: 0;
+            }
+            60% {
+                transform: scale(1.05) rotate(5deg);
+                box-shadow: 0 0 60px #00ffcc, 0 0 120px #00ffcc;
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+                box-shadow: 0 0 18px #00ffcc;
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h1>Hi 👋, I'm SIVA SANTHOSH R</h1>
+<h3>STUDENT</h3>
+<div id="sliderContainer" style="margin: 0 auto; width: 320px; position: relative;">
+    <img id="sliderImg" src="1737616438505.jpg" width="300" height="300" style="border-radius:16px; box-shadow:0 0 18px #00ffcc; animation: popIn 0.5s; cursor:pointer;">
+    <button id="prevBtn" style="position:absolute; top:50%; left:0; transform:translateY(-50%); background:rgba(0,0,0,0.6); color:#00ffcc; border:none; font-size:32px; cursor:pointer; border-radius:50%; width:40px; height:40px;">&#8592;</button>
+    <button id="nextBtn" style="position:absolute; top:50%; right:0; transform:translateY(-50%); background:rgba(0,0,0,0.6); color:#00ffcc; border:none; font-size:32px; cursor:pointer; border-radius:50%; width:40px; height:40px;">&#8594;</button>
+</div>
+
+<!-- Image Popup Modal -->
+<div id="imgModal" style="display:none; position:fixed; z-index:3000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.7);">
+  <div style="position:relative; margin:5% auto; width:90%; max-width:500px; animation: popIn 0.4s;">
+    <span id="closeImgModal" style="color:#00ffcc; position:absolute; top:10px; right:24px; font-size:36px; font-weight:bold; cursor:pointer; text-shadow:0 0 10px #00ffcc;">&times;</span>
+    <img id="modalImg" src="1737616438505.jpg" style="width:100%; border-radius:20px; box-shadow:0 0 30px #00ffcc, 0 0 60px #00ffcc;">
+  </div>
+</div>
+
+<script>
+const sliderImages = [
+    "1737616438505.jpg",
+    "Screenshot 2025-07-31 072709.png",
+    "Screenshot 2025-07-31 072723.png",
+    "Screenshot 2025-07-31 072739.png",
+    "Screenshot 2025-07-31 072800.png"
+];
+let currentImg = 0;
+const sliderImg = document.getElementById('sliderImg');
+const modalImg = document.getElementById('modalImg');
+
+function showSlide(idx) {
+    sliderImg.style.animation = 'none';
+    void sliderImg.offsetWidth; // trigger reflow
+    sliderImg.src = sliderImages[idx];
+    sliderImg.style.animation = 'slidePop 1s'; // changed to 1s
+    modalImg.src = sliderImages[idx];
+}
+
+document.getElementById('prevBtn').onclick = function() {
+    currentImg = (currentImg - 1 + sliderImages.length) % sliderImages.length;
+    showSlide(currentImg);
+};
+document.getElementById('nextBtn').onclick = function() {
+    currentImg = (currentImg + 1) % sliderImages.length;
+    showSlide(currentImg);
+};
+// Optional: auto-rotate every 3 seconds
+setInterval(function() {
+    document.getElementById('nextBtn').click();
+}, 3000); // You can keep this or set to 4000 for a more relaxed pace
+
+// Image pop-up
+sliderImg.onclick = function() {
+    document.getElementById('imgModal').style.display = 'block';
+};
+document.getElementById('closeImgModal').onclick = function() {
+    document.getElementById('imgModal').style.display = 'none';
+};
+window.addEventListener('click', function(event) {
+    var imgModal = document.getElementById('imgModal');
+    if (event.target == imgModal) {
+        imgModal.style.display = 'none';
+    }
+});
+
+// Contact Me button pop-up
+document.getElementById('contactBtn').onclick = function() {
+    document.getElementById('myModal').style.display = 'block';
+};
+document.getElementById('closeModal').onclick = function() {
+    document.getElementById('myModal').style.display = 'none';
+};
+window.addEventListener('click', function(event) {
+    var myModal = document.getElementById('myModal');
+    if (event.target == myModal) {
+        myModal.style.display = 'none';
+    }
+});
+</script>
+
+<h2>📖✏️ I’m currently studying in <strong>SIGA Polytechnic college, CHENNAI-10</strong></h2>
+<p>📫 How to reach me: <strong>prosanthosh06@gmail.com</strong></p>
+
+<h3>Connect with me:</h3>
+<p>
+    <a href="https://linkedin.com/in/www.linkedin.com/in/siva-santhosh-r-9a688233a" target="blank">LinkedIn</a> |
+    <a href="https://fb.com/https://www.facebook.com/pro.santhosh.16/" target="blank">Facebook</a> |
+    <a href="https://instagram.com/https://www.instagram.com/_santhosh_1815/" target="blank">Instagram</a> |
+    <a href="https://www.youtube.com/c/http://www.youtube.com/@jokerff_27" target="blank">YouTube</a>
+</p>
+
+<h3>Languages and Tools:</h3>
+<p>
+    <a href="https://www.blender.org/" target="_blank" rel="noreferrer"><img src="https://download.blender.org/branding/community/blender_community_badge_white.svg" alt="blender" width="40" height="40"/></a>
+    <a href="https://www.w3schools.com/cpp/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg" alt="cplusplus" width="40" height="40"/></a>
+    <a href="https://www.figma.com/" target="_blank" rel="noreferrer"><img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" alt="figma" width="40" height="40"/></a>
+    <a href="https://git-scm.com/" target="_blank" rel="noreferrer"><img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="40" height="40"/></a>
+    <a href="https://www.w3.org/html/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5" width="40" height="40"/></a>
+    <a href="https://www.adobe.com/in/products/illustrator.html" target="_blank" rel="noreferrer"><img src="https://www.vectorlogo.zone/logos/adobe_illustrator/adobe_illustrator-icon.svg" alt="illustrator" width="40" height="40"/></a>
+    <a href="https://www.python.org" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width="40" height="40"/></a>
+    <a href="https://unity.com/" target="_blank" rel="noreferrer"><img src="https://www.vectorlogo.zone/logos/unity3d/unity3d-icon.svg" alt="unity" width="40" height="40"/></a>
+</p>
+
+<!-- Popup Button -->
+<button id="contactBtn" style="margin-top: 30px; padding: 10px 25px; font-size: 18px; background: #00ffcc; color: #5a00a9; border: none; border-radius: 8px; cursor: pointer; box-shadow: 0 0 10px #00ffcc;">Contact Me</button>
+
+<!-- The Modal -->
+<div id="myModal" style="display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; overflow:auto; background:rgba(0,0,0,0.6);">
+  <div style="background:#222; margin:10% auto; padding:30px 40px; border-radius:16px; width:80%; max-width:400px; color:#fff; box-shadow:0 0 20px #00ffcc; animation: popIn 0.4s;">
+    <span id="closeModal" style="color:#00ffcc; float:right; font-size:28px; font-weight:bold; cursor:pointer;">&times;</span>
+    <h2 style="margin-top:0;">Contact Me</h2>
+    <p>Email: <strong>prosanthosh06@gmail.com</strong></p>
+    <p>LinkedIn: <a href="https://linkedin.com/in/siva-santhosh-r-9a688233a" target="_blank" style="color:#2978ff;">Profile</a></p>
+    <p>Instagram: <a href="https://www.instagram.com/_santhosh_1815/" target="_blank" style="color:#ff13cc;">@_santhosh_1815</a></p>
+  </div>
+</div>
+
+<audio id="bgMusic" src="sb.mp3" autoplay loop style="display:none;"></audio>
+<button onclick="toggleMusic()" style="position:fixed;bottom:20px;right:20px;z-index:4000;background:#bff439;color:#222;border:none;border-radius:50%;width:48px;height:48px;box-shadow:0 0 10px #00ffcc;font-size:22px;cursor:pointer;">&#9835;</button>
+<script>
+function toggleMusic() {
+    var music = document.getElementById('bgMusic');
+    if (music.paused) {
+        music.play();
+    } else {
+        music.pause();
+    }
+}
+</script>
+
+<h4 style="color: #ca4bea;">~portfolio author:<br>THEOPIN.B</h4>
+</body>
+</html>
